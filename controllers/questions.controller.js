@@ -61,11 +61,11 @@ async function checkSolution(req, res) {
     const response = await axios.post(
       "https://api.sphere-engine.com/api/v4/endpoint",
       {
-        access_token: "eca7bb76b2ec14bea73b511989121a41",
+        access_token: process.env.ACCESS_TOKEN,
         action: "run",
         sourceCode: solution,
         language: "10",
-        input: "YOUR_INPUT_DATA",
+        input: await Question.findByIdAndDelete(questionId),
       }
     );
 
